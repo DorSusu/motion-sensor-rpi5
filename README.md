@@ -1,52 +1,52 @@
-# Motion HDMI Control for Raspberry Pi 5 - German
-Ich nutze einen Raspberry P5 mit Bookworm. Darauf läuft pihole, Magic Mirror und iobroker. Daran über HDMI angeschlossen ist ein Bildschirm welcher sich nur einschalten soll, wenn eine Bewegung erkannt wird und nach einer gewissen zeit wieder abschalten soll. Das ganze soll über die Deaktivierung des HDMI Signals passieren. Lange Zeit hatte ich das über den Magic Mirror und ein Modul gelöst. Da sich der Entwickler zurück gezogen hat und ich nach einer "stand alone" Lösung suche, wollte ich das per script lösen
+# Motion HDMI Control for Raspberry Pi 5
+I'm using a Raspberry Pi 5 with Bookworm. Pihole, Magic Mirror, and iobroker are running on it. A screen is connected to it via HDMI, which should only turn on when motion is detected and turn off again after a certain period of time. This is supposed to happen by disabling the HDMI signal. For a long time, I solved this problem using the Magic Mirror and a module. Since the developer withdrew and I was looking for a standalone solution, I wanted to solve it with a script.
 
-Dieses Projekt nutzt einen PIR-Bewegungssensor zur Steuerung des HDMI-Ausgangs eines Raspberry Pi 5. Wenn Bewegung erkannt wird, wird ein Skript ausgeführt, das den Bildschirm aktiviert. Bei Inaktivität wird der Bildschirm nach einer Weile wieder deaktiviert.
+This project uses a PIR motion sensor to control the HDMI output of a Raspberry Pi 5. When motion is detected, a script is executed that activates the screen. If inactivity occurs, the screen deactivates again after a while.
 
-## 🛠️ Voraussetzungen
+## 🛠️ Requirements
 
 - Raspberry Pi 5
-- HC-SR501 Bewegungsmelder
-- Anschluss des HC-SR501: 
-    - VCC an eine 5 Volt PIN des Rpi 5
-    - GND an einen GND PIN des Rpi 5
-    - OUT an einen digitalen Eingas PIN des Rpi 5 (in meinem Fall der GPIO 23 Hardware pin 16)
-- Einstellung im terminal: ```sudo raspi-config```
-    advanced options -> wayland -> labwbc (X11 ging nicht bei mir da der Monitor grau bleibt)
-- `gpiozero` Bibliothek ist vorinstalliert. Falls nicht vorhanden dann: (`sudo apt install python3-gpiozero`)
-- Einstellungen im crontab: (zum starten des scripts beim jedem reboot)
-    crontab -e
-    ```@reboot  python /home/pi/motion_hdmi_rpi5.py &```
-        (das Verzeichnis an eurer System / Ordner anpassen wo die Script datei liegt)
-  
-## 📁 Dateien
+- HC-SR501 motion detector
+- Connecting the HC-SR501:
+- VCC to a 5 volt pin on the Raspberry Pi 5
+- GND to a GND pin on the Raspberry Pi 5
+- OUT to a digital input pin on the Raspberry Pi 5 (in my case, GPIO 23 hardware pin 16)
+- Terminal configuration: ```sudo raspi-config```
 
-- `motion_hdmi_rpi5.py`  
-  Das Hauptskript, das die Bewegung erkennt und entsprechende Aktionen ausführt.
-- `mon.sh`  
-  Shell-Skript zur Aktivierung des HDMI-Ausgangs.
-- `mof.sh`  
-  Shell-Skript zur Deaktivierung des HDMI-Ausgangs.
+advanced options -> wayland -> labwbc (X11 didn't work for me because the monitor remained gray)
+- `gpiozero` library is preinstalled. If not present, then: (`sudo apt install python3-gpiozero`)
+- Crontab settings: (to start the script on every reboot)
+crontab -e
+```@reboot python /home/pi/motion_hdmi_rpi5.py &```
+(Adjust the directory to your system / folder where the script file is located)
 
-## ⚙️ Verwendung
+## 📁 Files
 
-1. **Shell-Skripte ausführbar machen**  
-   Skripte Ausführbar machen mittels:
+- `motion_hdmi_rpi5.py`
+The main script that detects motion and executes the appropriate actions.
+- `mon.sh`
+Shell script to enable the HDMI output.
+- `mof.sh`
+Shell script to disable the HDMI output.
 
-   ```bash
-   chmod +x mon.sh mof.sh
-   ```
+## ⚙️ Usage
 
-2. **Python-Skript ausführen**  
-   Stelle sicher, dass Python 3 installiert ist und führe das Skript aus:
+1. **Make shell scripts executable**
+Make scripts executable using:
 
-   ```bash
-   python3 motion_hdmi_rpi5.py
-   ```
-   Anpasen der Abschaltzeit über die motion_hdmi_rpi5.py bei dem Punkt sleep (120) Zeit in sekunden
+```bash
+chmod +x mon.sh mof.sh
+```
 
-## ⏱️ Verhalten
+2. **Run Python script**
+Make sure Python 3 is installed and run the script:
 
-- **Bewegung erkannt**: HDMI wird aktiviert. Danach 2 Minuten Wartezeit.
-- **Keine Bewegung**: HDMI wird deaktiviert, sobald der Sensor keine Bewegung mehr erkennt.
+```bash
+python3 motion_hdmi_rpi5.py
+```
+Adjust the shutdown time via motion_hdmi_rpi5.py at the point sleep (120) Time in seconds
 
+## ⏱️ Behavior
+
+- **Motion detected**: HDMI is activated. Then wait 2 minutes.
+- **No motion**: HDMI is deactivated as soon as the sensor no longer detects motion.
