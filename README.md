@@ -43,7 +43,7 @@ Dieses Projekt nutzt einen PIR-Bewegungssensor zur Steuerung des HDMI-Ausgangs e
    ```bash
    python3 motion_hdmi_rpi5.py
    ```
-   Anpasen der Abschaltzeit über die motion_hdmi_rpi5.py bei dem Punkt sleep (60) Zeit in sekunden
+   Anpasen der Abschaltzeit über die motion_hdmi_rpi5.py bei dem Punkt sleep (120) Zeit in sekunden
 
 ## ⏱️ Verhalten
 
