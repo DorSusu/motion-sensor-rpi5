@@ -1,4 +1,6 @@
 # Motion HDMI Control for Raspberry Pi 5
+[German Version](https://github.com/DorSusu/motion-sensor-rpi5/blob/main/README-DE.md)
+
 I'm using a Raspberry Pi 5 with Bookworm. Pihole, Magic Mirror, and iobroker are running on it. A screen is connected to it via HDMI, which should only turn on when motion is detected and turn off again after a certain period of time. This is supposed to happen by disabling the HDMI signal. For a long time, I solved this problem using the Magic Mirror and a module. Since the developer withdrew and I was looking for a standalone solution, I wanted to solve it with a script.
 
 This project uses a PIR motion sensor to control the HDMI output of a Raspberry Pi 5. When motion is detected, a script is executed that activates the screen. If inactivity occurs, the screen deactivates again after a while.
