@@ -10,12 +10,10 @@ This project uses a PIR motion sensor to control the HDMI output of a Raspberry 
 - Raspberry Pi 5
 - HC-SR501 motion detector
 - Connecting the HC-SR501:
-- VCC to a 5 volt pin on the Raspberry Pi 5
-- GND to a GND pin on the Raspberry Pi 5
-- OUT to a digital input pin on the Raspberry Pi 5 (in my case, GPIO 23 hardware pin 16)
-- Terminal configuration: ```sudo raspi-config```
-
-advanced options -> wayland -> labwbc (X11 didn't work for me because the monitor remained gray)
+    - VCC to a 5 volt pin on the Raspberry Pi 5
+    - GND to a GND pin on the Raspberry Pi 5
+    - OUT to a digital input pin on the Raspberry Pi 5 (in my case, GPIO 23 hardware pin 16)
+- Terminal configuration: ```sudo raspi-config``` advanced options -> wayland -> labwbc (X11 didn't work for me because the monitor remained gray)
 - `gpiozero` library is preinstalled. If not present, then: (`sudo apt install python3-gpiozero`)
 - Crontab settings: (to start the script on every reboot)
 crontab -e
