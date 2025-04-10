@@ -31,7 +31,7 @@ Dieses Projekt nutzt einen PIR-Bewegungssensor zur Steuerung des HDMI-Ausgangs e
 ## ⚙️ Verwendung
 
 1. **Shell-Skripte ausführbar machen**  
-   Stelle sicher, dass die bereitgestellten Skripte ausführbar sind:
+   Skripte Ausführbar machen mittels:
 
    ```bash
    chmod +x mon.sh mof.sh
