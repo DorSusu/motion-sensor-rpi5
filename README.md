@@ -10,7 +10,7 @@ Dieses Projekt nutzt einen PIR-Bewegungssensor zur Steuerung des HDMI-Ausgangs e
 - Anschluss des HC-SR501: 
     - VCC an eine 5 Volt PIN des Rpi 5
     - GND an einen GND PIN des Rpi 5
-    - OUT an DI PIN des Rpi 5 (in meinem Fall der GPIO 23 Hardware pin 16)
+    - OUT an einen digitalen Eingas PIN des Rpi 5 (in meinem Fall der GPIO 23 Hardware pin 16)
 - Einstellung im terminal: ```sudo raspi-config```
     advanced options -> wayland -> labwbc (X11 ging nicht bei mir da der Monitor grau bleibt)
 - `gpiozero` Bibliothek ist vorinstalliert. Falls nicht vorhanden dann: (`sudo apt install python3-gpiozero`)
